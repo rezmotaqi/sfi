@@ -67,7 +67,7 @@ def train_classifier(embeddings, labels, target_label):
 
 # Step 5: Save the trained classifier and target embeddings
 def save_model(classifier, target_embeddings,
-			   model_path='mariam.pkl'):
+			   model_path='hallaji.pkl'):
 	with open(model_path, 'wb') as f:
 		pickle.dump(
 			{'classifier': classifier, 'target_embeddings':
@@ -76,7 +76,7 @@ def save_model(classifier, target_embeddings,
 
 
 # Main execution
-image_folder = './datasets/mariam'
+image_folder = './datasets/hallaji'
 embeddings, image_paths = process_image_archive(image_folder)
 labels = cluster_embeddings(embeddings)
 target_label = select_target_cluster(labels, image_paths)

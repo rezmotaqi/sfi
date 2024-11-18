@@ -10,13 +10,13 @@ import pygame
 pygame.mixer.init()
 
 # Load the audio file
-audio_file = "mariam.mp3"
+audio_file = "alie.mp3"
 if not os.path.isfile(audio_file):
     raise FileNotFoundError(f"Audio file '{audio_file}' not found.")
 pygame.mixer.music.load(audio_file)
 
 # Load the trained classifier and target embeddings
-model_path = 'mariam.pkl'
+model_path = 'mohamad.pkl'
 if not os.path.isfile(model_path):
     raise FileNotFoundError(f"Model file '{model_path}' not found.")
 with open(model_path, 'rb') as f:
@@ -67,12 +67,12 @@ while True:
         if prediction == 1 and probability > 0.5:  # Adjust threshold as needed
             target_currently_detected = True
             last_detection_time = current_time
-            print("Target individual detected.")
+            print(f"Ali hallaji is detected at {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(current_time))}")
 
             # Draw rectangle around the face
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
             # Display the label below the rectangle
-            cv2.putText(frame, "Target Individual", (left, bottom + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 255, 0), 2)
+            cv2.putText(frame, "Ali Hallaji", (left, bottom + 20), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (0, 255, 0), 2)
         else:
             # Draw rectangle around the face
             cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
