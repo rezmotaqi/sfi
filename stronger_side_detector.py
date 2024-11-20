@@ -3,12 +3,12 @@ import pickle
 import cv2
 import numpy as np
 from PIL import Image
-from keras.src.saving import load_model
+from keras.models import load_model
 from mtcnn import MTCNN
 
 
 model = load_model('facenet_keras.h5')  # Set compile=False if weights are separate
-model.load_weights('weights.h5')
+# model.load_weights('weights.h5')
 
 # Load the trained SVM classifier
 with open('mohamad.pkl', 'rb') as f:
@@ -46,7 +46,19 @@ def get_embedding(model, face_pixels):
 
 
 # Initialize webcam
-video_capture = cv2.VideoCapture(0)
+# video_capture = cv2.VideoCapture(0)
+
+
+# URL of the mobile camera stream
+video_stream_url = "http://192.168.186.19:8080/video"
+
+# Open the video stream
+video_capture = cv2.VideoCapture(video_stream_url)
+
+if not video_capture.isOpened():
+    print("Error: Unable to open video stream.")
+    exit()
+
 
 while True:
 	ret, frame = video_capture.read()

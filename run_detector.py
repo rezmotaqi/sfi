@@ -4,16 +4,16 @@ import pickle
 import cv2
 import face_recognition
 import numpy as np
-import pygame
+# import pygame
 
 # Initialize Pygame mixer for audio playback
-pygame.mixer.init()
-
-# Load the audio file
-audio_file = "alie.mp3"
-if not os.path.isfile(audio_file):
-    raise FileNotFoundError(f"Audio file '{audio_file}' not found.")
-pygame.mixer.music.load(audio_file)
+# pygame.mixer.init()
+#
+# # Load the audio file
+# audio_file = "alie.mp3"
+# if not os.path.isfile(audio_file):
+#     raise FileNotFoundError(f"Audio file '{audio_file}' not found.")
+# pygame.mixer.music.load(audio_file)
 
 # Load the trained classifier and target embeddings
 model_path = 'mohamad.pkl'
@@ -82,12 +82,12 @@ while True:
     # Manage audio playback
     if target_currently_detected and not target_detected:
         # Start playing audio if target is detected and audio is not already playing
-        pygame.mixer.music.play(-1)  # -1 means loop indefinitely
+        # pygame.mixer.music.play(-1)  # -1 means loop indefinitely
         target_detected = True
     elif not target_currently_detected and target_detected:
         # Stop playing audio if target is no longer detected
         if current_time - last_detection_time > detection_timeout:
-            pygame.mixer.music.stop()
+            # pygame.mixer.music.stop()
             target_detected = False
 
     # Display the resulting frame
